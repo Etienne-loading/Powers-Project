@@ -1,5 +1,5 @@
 class PowersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_power, only: [:show]
 
   def index
@@ -14,7 +14,8 @@ class PowersController < ApplicationController
   end
 
   def create
-    @power = Power.new(powe_params)
+    @power = Power.new(power_params)
+    @power.user = current_user
     if @power.save
       redirect_to root_path
     else
