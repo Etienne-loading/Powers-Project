@@ -4,6 +4,7 @@ class PowersController < ApplicationController
 
   def index
     @powers = Power.all
+    @powers = Power.where.not(user_id: current_user.id)
   end
 
   def show
