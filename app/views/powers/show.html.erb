@@ -1,3 +1,23 @@
-<h1><%= @power.name %></h1>
+<div class="container">
+  <div class="row justify-content-center my-4">
+    <div class="col">
+      <h1><%= @power.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    <p><%= @power.price %> $</p>
+    <p><%= @power.description %></p>
+    <p><%= @power.rarity %></p>
+    <p><%= @power.category %></p>
+    <p><%= @power.universe %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col bg-white p-4 my-4">
+      <h2>Add a booking</h2>
+    </div>
+  </div>
+</div>
 
 <%= link_to "back to list of powers", root_path %>
