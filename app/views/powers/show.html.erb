@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="datepicker"->
   <div class="row justify-content-center my-4">
     <div class="col">
       <h1><%= @power.name %></h1>
@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col">
-    <p><%= @power.price %> $</p>
+    <p data-datepicker-target="price"><%= @power.price %> $</p>
     <p><%= @power.description %></p>
     <p><%= @power.rarity %></p>
     <p><%= @power.category %></p>
@@ -16,8 +16,17 @@
   <div class="row">
     <div class="col bg-white p-4 my-4">
       <h2>Add a booking</h2>
+      <%= simple_form_for [@power, @booking] do |f| %>
+        <%= f.input :start_date,
+                    as: :string,
+                    input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" } } %>
+        <%= f.input :end_date,
+                    as: :string,
+                    input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" } } %>
+        <div data-datepicker-target="total"></div>
+        <%= f.submit class: "btn btn-primary", data_datepicker_action: "submit->datepicker#booking" %>
+        <% end %>
     </div>
   </div>
+  <%= link_to "back to list of powers", root_path %>
 </div>
-
-<%= link_to "back to list of powers", root_path %>
