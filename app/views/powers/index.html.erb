@@ -2,8 +2,15 @@
   <div class="row">
     <h1>List of powers (<%= @powers.count %>)</h1>
     <% @powers.each do |power| %>
-      <%= link_to power.name, power_path(power), classe: "col text-decoration-non" %>
+      <div class="col">
+        <%= link_to power.name, power_path(power), class: "text-decoration-none" %>
+        <p><%= power.user.pseudo %></p>
+      </div>
     <% end %>
-    <%= link_to "Add power", new_power_path(@power) %>
+    <div class="row">
+      <div class="col">
+        <%= link_to "Add power", new_power_path(@power), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
   </div>
 </div>
