@@ -3,6 +3,7 @@ class Power < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_one_attached :photo
 
   CATEGORY = ["Hogwart", "The Legend of Zelda", "Flash", "Star Wars", "Dragon Ball"]
   RARITY = ["Legendary", "Epic", "Rare", "Uncommon"]
