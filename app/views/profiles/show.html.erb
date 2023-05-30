@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+      <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="profile picture">
+          <div class="card-body">
+            <p class="card-text"><%= @profile.first_name %></p>
+            <p class="card-text"><%= @profile.last_name %></p>
+            <p class="card-text"><%= @profile.address %></p>
+            <p class="card-text"><%= @profile.email %></p>
+          </div>
+          <div class="card-footer"><%= link_to "edit" %></div>
+        </div>
+      </div>
+    <div class="col">
+    <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
+      <% @profile.powers.each do |power|  %>
+        <div><%= link_to power.name, power_path(power) %></div>
+      <% end %>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col mt-3"><h2>Bookings</h2>
+        <% @profile.bookings.each do |booking|  %>
+        <div><%= booking.id %></div>
+      <% end %>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
