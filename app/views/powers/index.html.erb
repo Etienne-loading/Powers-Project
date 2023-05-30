@@ -2,9 +2,7 @@
   <div class="row">
     <h1>List of powers (<%= @powers.count %>)</h1>
     <% @powers.each do |power| %>
-      <div class="col">
-        <%= link_to power.name, power_path(power) %>
-      </div>
+      <%= link_to power.name, power_path(power), classe: "col text-decoration-non" , style:"background-image: url('#{cl_image_path power.photo.key}')" %>
     <% end %>
     <%= link_to "Add power", new_power_path(@power) %>
   </div>
