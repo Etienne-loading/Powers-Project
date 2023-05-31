@@ -1,11 +1,11 @@
 <%= render "shared/banner" %>
 
 <div class="container">
-  <h2 class="my-4" >List of powers (<%= @powers.count %>)</h2>
+  <h2 class="my-5" >List of powers (<%= @powers.count %>)</h2>
 
   <div class="card-container">
     <% @powers.each do |power| %>
-      <%= link_to power_path(power), class: "card-link m-auto mb-2" do %>
+      <%= link_to power_path(power), class: "card-link m-auto my-4" do %>
         <div class="card-power">
         <% if power.photo.attached? %>
           <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)"></div>
@@ -17,7 +17,7 @@
             <p class="text-body <%= 'text-decoration-none' %>"><%= power.user.pseudo %></p>
           </div>
           <div class="card-footer">
-            <span class="text-title">$<%= power.price %></span>
+            <span class="text-title">$<%= power.price %> <p class="per-day">/per day</p></span>
             <div class="card-button">
             <span class="material-symbols-outlined" style="font-weight: 200; font-size: 35px;"> arrow_circle_right </span>
             </div>
