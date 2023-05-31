@@ -24,6 +24,9 @@
                     as: :string,
                     input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" } } %>
         <div data-datepicker-target="total"></div>
+         <%= f.input :total_price,
+                    as: :integer,
+                    input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
         <%= f.submit class: "btn btn-primary", data_datepicker_action: "submit->datepicker#booking" %>
         <% end %>
     </div>

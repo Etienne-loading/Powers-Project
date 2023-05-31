@@ -3,7 +3,7 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="datepicker"
 export default class extends Controller {
-  static targets = ['startDate', 'endDate', 'total', 'price']
+  static targets = ['startDate', 'endDate', 'total', 'price', 'totalInput']
 
   connect() {
     const date = new Date
@@ -28,6 +28,12 @@ export default class extends Controller {
       this.totalTarget.innerText = `Total: ${days * price} $`
     } else {
       this.totalTarget.innerText = `Total: 0 $`
+    }
+
+    if (this.endDateTarget.value && this.startDateTarget.value) {
+      this.totalInputTarget.value = days * price
+    } else {
+      this.totalInputTarget.value = 0
     }
   }
 }
