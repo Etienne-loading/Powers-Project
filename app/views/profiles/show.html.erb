@@ -3,7 +3,11 @@
       <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
     <div class="col-3">
         <div class="card" style="width: 18rem;">
-          <%= cl_image_tag @profile.profile_photo.key, crop: :fill %>
+          <% if @profile.profile_photo.attached?  %>
+            <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
+          <% else %>
+            <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
+          <% end %>
           <div class="card-body">
             <p class="card-text"><%= @profile.first_name %></p>
             <p class="card-text"><%= @profile.last_name %></p>
@@ -19,6 +23,8 @@
     <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
       <% @profile.powers.each do |power|  %>
         <div><%= link_to power.name, power_path(power) %></div>
+        <div><%= link_to "delete", power_path(power), class: "btn btn-outline-danger",
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></div>
       <% end %>
           <%= link_to "Add power", new_power_path(@power), class: "btn btn-outline-primary mt-5" %>
     </div>

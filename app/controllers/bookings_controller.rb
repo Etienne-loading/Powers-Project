@@ -18,10 +18,6 @@ class BookingsController < ApplicationController
 
   private
 
-  def set_user
-    @power = Power.find(params[:user_id])
-  end
-
   def set_power
     @power = Power.find(params[:power_id])
   end
