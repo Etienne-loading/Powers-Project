@@ -1,5 +1,6 @@
 class PowersController < ApplicationController
   before_action :set_power, only: [:show]
+  before_action :set_profile, only: [:show, :index, :new]
 
   def index
     @powers = Power.all
@@ -28,6 +29,10 @@ class PowersController < ApplicationController
 
   def set_power
     @power = Power.find(params[:id])
+  end
+
+  def set_profile
+    @profile = current_user
   end
 
   def power_params
