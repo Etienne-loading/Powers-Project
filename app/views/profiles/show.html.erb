@@ -20,7 +20,7 @@
       <% @profile.powers.each do |power|  %>
         <div><%= link_to power.name, power_path(power) %></div>
       <% end %>
-          <%= link_to "Add power", new_power_path(@power), class: "btn btn-outline-primary mt-5" %>
+          <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
     </div>
   </div>
     <div class="row">
