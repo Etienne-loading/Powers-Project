@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
+
   def show
   end
 
@@ -11,6 +12,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.permit(:user).permit(:pseudo, :address, :first_name, :last_name, :power_id)
+    params.permit(:user).permit(:pseudo, :address, :first_name, :last_name, :power_id, :profile_photo)
   end
 end
