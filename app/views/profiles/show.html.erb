@@ -22,9 +22,12 @@
     <div class="col">
     <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
       <% @profile.powers.each do |power|  %>
-        <div><%= link_to power.name, power_path(power) %></div>
-        <div><%= link_to "delete", power_path(power), class: "btn btn-outline-danger",
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></div>
+      <div>
+        <%= link_to power.name, power_path(power) %>
+        <%= link_to "delete", power_path(power), class: "btn btn-outline-danger",
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+         <%= link_to "Edit power", edit_power_path(power), class: "btn btn-outline-primary"%>
+      </div>
       <% end %>
           <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
     </div>

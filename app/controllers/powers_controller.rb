@@ -1,6 +1,6 @@
 class PowersController < ApplicationController
-  before_action :set_power, only: [:show, :destroy]
-  before_action :set_profile, only: [:show, :index, :new]
+  before_action :set_power, only: [:show, :destroy, :edit, :update]
+  before_action :set_profile, only: [:show, :index, :new, :edit, :update]
 
   def index
     @powers = Power.all
@@ -28,6 +28,14 @@ class PowersController < ApplicationController
   def destroy
     @power.destroy
     redirect_to profile_path(current_user), status: :see_other
+  end
+
+  def edit
+  end
+
+  def update
+    @power.update(power_params)
+    redirect_to profile_path(current_user)
   end
 
 
