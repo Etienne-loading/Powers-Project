@@ -17,7 +17,7 @@
           <li class="nav-item dropdown">
           <a href="" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if @profile.profile_photo.attached? %>
-            <%= cl_image_tag @profile.profile_photo.key, class: "avatar", alt: "dropdown menu", style: 'object-fit: cover' %>
+            <%= cl_image_tag @profile.profile_photo.key, class: "avatar h-100", alt: "dropdown menu", style: 'object-fit: cover' %>
           <% else %>
             <%= image_tag 'avatar.webp', class: "avatar h-100", alt: "dropdown menu", style: 'object-fit: cover' %>
           <% end %>

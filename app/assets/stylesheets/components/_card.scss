@@ -15,11 +15,13 @@
 }
 
 .card-img {
-background-color: #8785ff;
+// background-color: #8785ff;
 height: 40%;
 width: 100%;
 border-radius: .5rem;
 transition: .3s ease;
+background-position: center;
+background-size: cover;
 }
 
 .card-info {
@@ -66,12 +68,12 @@ align-items: center;
 /*Hover*/
 .card-img:hover {
 transform: translateY(-25%);
-box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(255, 247, 2, 0.3) 0px 8px 16px -8px;
+box-shadow: rgba(255, 252, 236, 0.25) 0px 13px 47px -5px, rgba(34, 137, 255, 0.3) 0px 8px 16px -8px;
 }
 
 .card-button:hover {
 // border: 1px solid #8785ff;
-background-color: #8785ff;
+background-color: #c2c2ff;
 }
 
 .text-decoration-none {

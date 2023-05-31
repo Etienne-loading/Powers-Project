@@ -5,7 +5,11 @@
     <% @powers.each do |power| %>
       <%= link_to power_path(power), class: "card-link m-auto mb-2" do %>
         <div class="card-power">
+        <% if power.photo.attached? %>
+          <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)"></div>
+        <% else %>
           <div class="card-img"></div>
+        <% end %>
           <div class="card-info">
             <p class="text-title <%= 'text-decoration-none' %>"><%= power.name %></p>
             <p class="text-body <%= 'text-decoration-none' %>"><%= power.user.pseudo %></p>
