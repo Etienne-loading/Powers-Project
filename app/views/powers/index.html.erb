@@ -1,9 +1,9 @@
 <div class="container">
   <h2>List of powers (<%= @powers.count %>)</h2>
 
-  <div class="card-container">
+  <div class="card-container mt-4">
     <% @powers.each do |power| %>
-      <%= link_to power_path(power), class: "card-link" do %>
+      <%= link_to power_path(power), class: "card-link m-auto mb-2" do %>
         <div class="card-power">
           <div class="card-img"></div>
           <div class="card-info">
