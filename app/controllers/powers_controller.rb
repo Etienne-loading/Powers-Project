@@ -1,5 +1,5 @@
 class PowersController < ApplicationController
-  before_action :set_power, only: [:show]
+  before_action :set_power, only: [:show, :destroy]
   before_action :set_profile, only: [:show, :index, :new]
 
   def index
@@ -19,20 +19,22 @@ class PowersController < ApplicationController
     @power = Power.new(power_params)
     @power.user = current_user
     if @power.save
-      redirect_to root_path
+      redirect_to profile_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def destroy
+    @power.destroy
+    redirect_to profile_path(current_user), status: :see_other
+  end
+
+
   private
 
   def set_power
     @power = Power.find(params[:id])
-  end
-
-  def set_profile
-    @profile = current_user
   end
 
   def power_params
