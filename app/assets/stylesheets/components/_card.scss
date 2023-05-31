@@ -16,66 +16,90 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
- .card-img {
-  background-color: #a7a6ff;
-  height: 40%;
-  width: 100%;
-  border-radius: .5rem;
-  transition: .3s ease;
- }
+.card-img {
+background-color: #a7a6ff;
+height: 40%;
+width: 100%;
+border-radius: .5rem;
+transition: .3s ease;
+}
 
- .card-info {
-  padding-top: 10%;
- }
+.card-info {
+padding-top: 10%;
+}
 
- svg {
-  width: 20px;
-  height: 20px;
- }
+.card-footer {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-top: 10px;
+border-top: 1px solid #ddd;
+}
 
- .card-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
- }
+/*Text*/
+.text-title {
+font-weight: 900;
+font-size: 1.2em;
+line-height: 1.5;
+margin-bottom: 0rem;
+color: #202020;
+}
 
- /*Text*/
- .text-title {
-  font-weight: 900;
-  font-size: 1.2em;
-  line-height: 1.5;
-  margin-bottom: 0rem;
- }
+.text-body {
+font-size: .9em;
+margin-bottom: 1rem;
+}
 
- .text-body {
-  font-size: .9em;
-  margin-bottom: 1rem;
- }
+/*Button*/
+.card-button {
+display: flex;
+padding: .3em;
+cursor: pointer;
+border-radius: 50px;
+transition: .3s ease-in-out;
+width: 25px;
+height: 25px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
- /*Button*/
- .card-button {
-  border: 1px solid #252525;
-  display: flex;
-  padding: .3em;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: .3s ease-in-out;
- }
+/*Hover*/
+.card-img:hover {
+transform: translateY(-25%);
+box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+}
 
- /*Hover*/
- .card-img:hover {
-  transform: translateY(-25%);
-  box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
- }
+.card-button:hover {
+// border: 1px solid #a7a6ff;
+background-color: #a7a6ff;
+}
 
- .card-button:hover {
-  border: 1px solid #a7a6ff;
-  background-color: #a7a6ff;
- }
+.text-decoration-none {
+color: #202020;
+}
 
- .text-decoration-none {
-  color: #1a1a1a;
- }
+.card-info {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.material-symbols-outlined {
+  color:#202020;
+}
