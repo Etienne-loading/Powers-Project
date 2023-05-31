@@ -1,21 +1,20 @@
 <div class="container">
   <div class="row">
       <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
-    <div class="col-3">
-        <div class="card" style="width: 18rem;">
+    <div class="col-4">
+        <div class="card">
           <% if @profile.profile_photo.attached?  %>
+          <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
             <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
           <% else %>
+            <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
             <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
           <% end %>
           <div class="card-body">
-            <p class="card-text"><%= @profile.first_name %></p>
-            <p class="card-text"><%= @profile.last_name %></p>
-            <p class="card-text"><%= @profile.address %></p>
-            <p class="card-text"><%= @profile.email %></p>
-          </div>
-          <div class="card-footer">
-            <%= link_to "edit", edit_user_registration_path(@profile) %>
+            <p class="card-text border-bottom py-3"><strong>first name: </strong><%= @profile.first_name %></p>
+            <p class="card-text border-bottom py-3"><strong>last name: </strong><%= @profile.last_name %></p>
+            <p class="card-text border-bottom py-3"><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></p>
+            <p class="card-text py-3"><i class="fa-solid fa-envelope"></i> <%= @profile.email %></p>
           </div>
         </div>
       </div>
