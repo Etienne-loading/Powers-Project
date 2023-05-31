@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_power, only: %i[new create]
-  before_action :set_user, only: %i[new create]
+  before_action :set_power, only: %i[new]
 
   def new
     @booking = Booking.new
@@ -8,18 +7,20 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.powers = @power
+    @power = Power.find(params[:power_id])
+    @booking.power = @power
+    @booking.user = current_user
     if @booking.save
-      redirect_to list_path(@power)
+      redirect_to power_path(@power)
     else
-      render "/powers/show", status: :unprocessable_entity
+      render "powers/show", status: :unprocessable_entity
     end
   end
 
   private
 
   def set_user
-    @power = Power.find(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def set_power
