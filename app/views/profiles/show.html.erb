@@ -3,14 +3,16 @@
       <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
     <div class="col-3">
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="profile picture">
+          <%= cl_image_tag @profile.profile_photo.key, crop: :fill %>
           <div class="card-body">
             <p class="card-text"><%= @profile.first_name %></p>
             <p class="card-text"><%= @profile.last_name %></p>
             <p class="card-text"><%= @profile.address %></p>
             <p class="card-text"><%= @profile.email %></p>
           </div>
-          <div class="card-footer"><%= link_to "edit" %></div>
+          <div class="card-footer">
+            <%= link_to "edit", edit_user_registration_path(@profile) %>
+          </div>
         </div>
       </div>
     <div class="col">

@@ -8,6 +8,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :profile_photo, as: :file %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :pseudo %>
