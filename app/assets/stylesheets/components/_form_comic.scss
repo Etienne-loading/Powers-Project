@@ -1,0 +1,51 @@
+.form-comic {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid  #323232;
+  box-shadow: 4px 4px  #323232;
+}
+
+.input-comic {
+  width: 450px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 15px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.button-confirm {
+  margin: 50px auto 0 auto;
+  width: auto;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 17px;
+  font-weight: 600;
+  color: #323232;
+  cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Facultatif, pour centrer verticalement le formulaire */
+}
+
+.margin-category-title {
+  margin-bottom: 0.5rem;
+}
