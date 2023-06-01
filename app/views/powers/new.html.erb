@@ -1,11 +1,2 @@
 <h1>New power</h1>
-<%= simple_form_for @power do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :price %>
-  <%= f.input :universe, collection: Power::UNIVERSE, error: "Universe is mandatory", prompt: "choose a universe..." %>
-  <%= f.input :category, collection: Power::CATEGORY, error: "Category is mandatory", prompt: "choose a category..." %>
-  <%= f.input :rarity, collection: Power::RARITY, error: "Rarity is mandatory", prompt: "choose a rarity..." %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+<%= render "shared/form" %>

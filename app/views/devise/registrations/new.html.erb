@@ -7,7 +7,9 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" },
+                label: false,
+                wrapper: false %>
     <%= f.input :profile_photo, as: :file %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
@@ -23,7 +25,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
