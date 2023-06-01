@@ -14,6 +14,9 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
+          <li>
+            <%= link_to "Add power", new_power_path(@power), class: "btn btn-primary me-3"%>
+          </li>
           <li class="nav-item dropdown">
           <a href="" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if @profile.profile_photo.attached? %>
