@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :powers do
     resources :bookings, only: [:new, :create]
   end
+
+  resources :bookings, only: [] do
+    resources :reviews, only: %i[new create]
+  end
 end
