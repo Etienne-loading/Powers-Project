@@ -51,13 +51,15 @@
   <div class="row">
     <div class="col-12 mt-5">
       <h3>Bookings</h3>
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Booking reference</th>
+            <th scope="col">#</th>
             <th scope="col">Power</th>
             <th scope="col">Price</th>
             <th scope="col">Owner</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +69,8 @@
             <td><%= booking.power.name%></td>
             <td><p>$ <%= booking.total_price%></p></td>
             <td><%= booking.power.user.pseudo%></td>
+            <td><%= booking.start_date%></td>
+            <td><%= booking.end_date%></td>
           </tr>
           <% end %>
         </tbody>
