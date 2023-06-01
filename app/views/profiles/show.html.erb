@@ -1,43 +1,76 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-3">
       <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
-    <div class="col-4">
-        <div class="card">
-          <% if @profile.profile_photo.attached?  %>
-          <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
-            <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
-          <% else %>
-            <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
-            <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
-          <% end %>
-          <div class="card-body">
-            <p class="card-text border-bottom py-3"><strong>first name: </strong><%= @profile.first_name %></p>
-            <p class="card-text border-bottom py-3"><strong>last name: </strong><%= @profile.last_name %></p>
-            <p class="card-text border-bottom py-3"><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></p>
-            <p class="card-text py-3"><i class="fa-solid fa-envelope"></i> <%= @profile.email %></p>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <% if @profile.profile_photo.attached?  %>
+        <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
+        <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
+        <% else %>
+        <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
+        <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-text border-bottom py-3"><strong>first name: </strong><%= @profile.first_name %></p>
+          <p class="card-text border-bottom py-3"><strong>last name: </strong><%= @profile.last_name %></p>
+          <p class="card-text border-bottom py-3"><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></p>
+          <p class="card-text py-3"><i class="fa-solid fa-envelope"></i> <%= @profile.email %></p>
         </div>
       </div>
-    <div class="col">
-    <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
-      <% @profile.powers.each do |power|  %>
-      <div>
-        <%= link_to power.name, power_path(power) %>
-        <%= link_to "delete", power_path(power), class: "btn btn-outline-danger",
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-         <%= link_to "Edit power", edit_power_path(power), class: "btn btn-outline-primary"%>
+    </div>
+    <div class="col-9">
+      <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
+      <div class="card-container">
+        <% @profile.powers.each do |power| %>
+        <%= link_to power_path(power), class: "card-link m-auto my-4" do %>
+        <div class="card-power">
+          <% if power.photo.attached? %>
+          <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)"></div>
+          <% else %>
+          <div class="card-img"></div>
+          <% end %>
+          <div class="card-info">
+            <p class="text-title <%= 'text-decoration-none' %>"><%= power.name %></p>
+            <p class="text-body <%= 'text-decoration-none' %>"><%= power.user.pseudo %></p>
+          </div>
+          <div class="card-footer">
+            <span class="text-title">$<%= power.price %> <p class="per-day">/per day</p></span>
+            <div class="card-button">
+              <span class="material-symbols-outlined" style="font-weight: 200; font-size: 35px;"> arrow_circle_right </span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
       </div>
-      <% end %>
-          <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
+      <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
     </div>
   </div>
-    <div class="row">
-      <div class="col mt-3"><h2>Bookings</h2>
-        <% @profile.bookings.each do |booking|  %>
-        <div><%= booking.id %></div>
-      <% end %>
-    </div>
-      </div>
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h3>Bookings</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Booking reference</th>
+            <th scope="col">Power</th>
+            <th scope="col">Price</th>
+            <th scope="col">Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @profile.bookings.each do |booking| %>
+            <td><%= booking.id%></td>
+            <td><%= booking.power.name%></td>
+            <td><p>$ <%= booking.total_price%></p></td>
+            <td><%= booking.power.user.pseudo%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
