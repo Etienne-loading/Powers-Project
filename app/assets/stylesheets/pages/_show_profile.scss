@@ -1,0 +1,27 @@
+.card {
+  .fa-pen {
+    font-size: 0.8em;
+  }
+  .fa-pen:hover {
+    color: white;
+  }
+}
+
+.col {
+  .card-power {
+    transition: none;
+  }
+  .card-power:hover {
+    transform: none;
+    box-shadow: 4px 4px rgba(50, 50, 50, 1), 4px 4px rgba(50, 50, 50, 1);
+  }
+  .fa-trash {
+    font-size: 0.8em;
+  }
+  .fa-trash:hover {
+    color: white;
+  }
+  .button-log:hover {
+    background-color: rgb(252, 93, 93);
+  }
+}
