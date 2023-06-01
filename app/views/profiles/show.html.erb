@@ -13,8 +13,8 @@
         <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
         <% end %>
         <div class="card-body">
-          <p class="card-text border-bottom py-3"><strong>first name: </strong><%= @profile.first_name %></p>
-          <p class="card-text border-bottom py-3"><strong>last name: </strong><%= @profile.last_name %></p>
+          <p class="card-text border-bottom py-3"><strong>First name: </strong><%= @profile.first_name %></p>
+          <p class="card-text border-bottom py-3"><strong>Last name: </strong><%= @profile.last_name %></p>
           <p class="card-text border-bottom py-3"><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></p>
           <p class="card-text py-3"><i class="fa-solid fa-envelope"></i> <%= @profile.email %></p>
         </div>
@@ -50,7 +50,7 @@
   </div>
   <div class="row">
     <div class="col-12 mt-5">
-      <h3>Bookings</h3>
+      <h3> My bookings</h3>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -65,12 +65,12 @@
         <tbody>
           <tr>
             <% @profile.bookings.each do |booking| %>
-            <td><%= booking.id%></td>
-            <td><%= booking.power.name%></td>
-            <td><p>$ <%= booking.total_price%></p></td>
-            <td><%= booking.power.user.pseudo%></td>
-            <td><%= booking.start_date%></td>
-            <td><%= booking.end_date%></td>
+            <td class="align-middle"><%= booking.id%></td>
+            <td class="align-middle"><%= booking.power.name%></td>
+            <td class="align-middle">$ <%= booking.total_price%></td>
+            <td class="align-middle"><%= booking.power.user.pseudo%></td>
+            <td class="align-middle"><%= booking.start_date%></td>
+            <td class="align-middle"><%= booking.end_date%></td>
           </tr>
           <% end %>
         </tbody>
