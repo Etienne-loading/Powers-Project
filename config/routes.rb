@@ -6,7 +6,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :powers do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :update]
+  end
+
+  resources :bookings, only: [] do
+    member do
+      get :confirm
+      get :cancel
+    end
   end
 
   resources :bookings, only: [] do

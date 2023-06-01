@@ -12,7 +12,7 @@
         <p class= "margin-category-title">Choose a rarity :</p>
         <%= f.input :rarity, collection: Power::RARITY, error: "Rarity is mandatory", prompt: "Rarity...", label: false, input_html: { class: "input-comic" } %>
         <%= f.input :photo, as: :file, label: "Choose a picture", input_html: { class: "input-comic" } %>
-        <%= f.submit class: "button-confirm" %>
+        <%= f.submit class: "button-confirm mt-3" %>
       <% end %>
     </div>
   </div>
