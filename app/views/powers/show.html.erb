@@ -28,8 +28,9 @@
   <% if @power.user_id == current_user.id %>
     <div class="row mt-4">
       <div class="col ps-0">
-      <%= link_to "Back to list of my powers", profile_path(:id), class: "btn btn-outline-secondary position-absolute end-0", style: "top: 100px; margin-right: 185px" %>
-      <%= link_to "Edit this power", edit_power_path(@power), class: "btn btn-outline-primary"%>
+        <%= link_to edit_power_path(@power) do%>
+          <button class="button-confirm mt-0">Edit this power</button>
+        <% end %>
       </div>
     </div>
   <% else %>
