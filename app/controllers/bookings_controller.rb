@@ -17,6 +17,28 @@ class BookingsController < ApplicationController
     end
   end
 
+  def confirm
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "confirmed")
+    redirect_to profile_path(@profile)
+  end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "canceled")
+    redirect_to profile_path(@profile)
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to profile_path(@profile)
+    else
+      render "profiles/show", status: :unprocessable_entity
+    end
+  end
+
+
   private
 
   def set_user
@@ -30,5 +52,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :user_id, :power_id, :status, :total_price)
   end
-
 end
