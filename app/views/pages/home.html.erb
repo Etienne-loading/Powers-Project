@@ -1,3 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "click ici",  powers_path %>
+<%= render "shared/banner" %>
+
+<div class="container">
+  <%= form_with url: powers_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control my-3", id:"search-bar",
+      placeholder: "Find a power or magical item"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary my-3", id:"search-btn" %>
+  <% end %>
+  <h2>About us</h2>
+  <div class="border rounded p-4 m-3">
+    <h2>Zero to hero</h2>
+    <p>Become a hero in 2 clicks ! Powerup gives you the opportunity to rent magical powers and items very quickly. The universe's greatest heroes and protagonists are here to offer you their powers, so it's up to you to save the world!
+    Sagas, video games, manga or comic books, they're all here!
+
+    These powers are sold by our approved and certified suppliers.
+    Our products are regularly inspected.</p>
+  </div>
+  <h2>Our feedbacks from rentals</h2>
+  <div class="border rounded p-4 m-3">
+    <figure>
+      <blockquote class="blockquote">
+        <p>"Great experience, my fans want my Master Sword to solve their everyday problems. Meeting them and helping them makes me feel like I'm helping my peers."</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Link <cite title="Source Title">Hyrul's fields</cite>
+      </figcaption>
+    </figure>
+    <figure>
+      <blockquote class="blockquote">
+        <p>"What a service, PowerUp always here to help us to manage rental issues ! Last time, my power was used to destroy a pyramid in Guatemala... I was so sorry... but at the end PowerUp did all to resolve and support me! Thanks a lot.."</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Kakarotte alias Son Goku <cite title="Source Title">somewhere in the universe</cite>
+      </figcaption>
+    </figure>
+  </div>
+</div>
