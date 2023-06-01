@@ -10,7 +10,7 @@
         <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
         <% else %>
         <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
-        <%= image_tag 'avatar.webp', alt: "Profile image", crop: :fill %>
+        <%= image_tag 'avatar.webp', alt: "Profile igmage", crop: :fill %>
         <% end %>
         <div class="card-body">
           <p class="card-text border-bottom py-3"><strong>First name: </strong><%= @profile.first_name %></p>
