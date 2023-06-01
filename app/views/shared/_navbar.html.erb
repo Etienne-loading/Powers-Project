@@ -1,7 +1,13 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "Hand-clenched-power-strength-logo-on-transparent-background-PNG.png" %>
+      <%= link_to "Home", root_path, class: "nav-link ms-4" %>
+    <%= form_with url: powers_path, method: :get, class: "d-flex w-50" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "input-comic my-3", id:"search-bar",
+        placeholder: "Find a power or magical item"
+      %>
+      <%= submit_tag "Search", class: "button-confirm my-3", id:"search-btn" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,25 +17,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "Add power", new_power_path(@power), class: "btn btn-primary me-3"%>
-          </li>
-          <li class="nav-item dropdown">
+          <div class="d-flex justify-content-center align-items-center">
+            <%= link_to new_power_path(@power) do%>
+              <button class="button-confirm me-3 m-0 d-flex align-items-center px-2">Add power</button>
+            <% end %>
+          <div class="nav-item dropdown">
           <a href="" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if @profile.profile_photo.attached? %>
-            <%= cl_image_tag @profile.profile_photo.key, class: "avatar h-100", alt: "dropdown menu", style: 'object-fit: cover' %>
+            <%= cl_image_tag @profile.profile_photo.key, class: "avatar", alt: "dropdown menu", style: 'object-fit: cover' %>
           <% else %>
-            <%= image_tag 'avatar.webp', class: "avatar h-100", alt: "dropdown menu", style: 'object-fit: cover' %>
+            <%= image_tag 'avatar.webp', class: "avatar", alt: "dropdown menu", style: 'object-fit: cover' %>
           <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", profile_path(:id), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
-          </li>
+          </div>
+          </div>
         <% else %>
           <%= link_to "index", root_path %>
           <li class="nav-item">

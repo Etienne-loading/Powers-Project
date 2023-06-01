@@ -5,7 +5,7 @@ class Power < ApplicationRecord
   has_many :reviews, through: :bookings
   has_one_attached :photo
 
-  CATEGORY = ["Hogwart", "The Legend of Zelda", "Flash", "Star Wars", "Dragon Ball"]
+  CATEGORY = ["Hogwart", "The Legend of Zelda", "Flash", "Star Wars", "Dragon Ball", "Indiana Jones", "Avenger", "Death Note", "Nintendo"]
   RARITY = ["Legendary", "Epic", "Rare", "Uncommon"]
   UNIVERSE = ["Manga", "Video games", "Saga", "Comics"]
   validates :name, presence: true

@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row mt-3">
-      <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
+    <h1 class="text-center mb-5"> Dashboard of <%= @profile.pseudo %></h1>
   </div>
   <div class="row">
     <div class="col-3">
       <div class="card">
         <% if @profile.profile_photo.attached?  %>
-        <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
+        <%= link_to "", edit_user_registration_path(@profile), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-pen" %>
         <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
         <% else %>
-        <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
+        <%= link_to "", edit_user_registration_path(@profile), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-pen" %>
         <%= image_tag 'avatar.webp', alt: "Profile igmage", crop: :fill %>
         <% end %>
         <div class="card-body">
@@ -20,32 +20,36 @@
         </div>
       </div>
     </div>
-    <div class="col-9">
-      <h2>List of your powers/items (<%= @profile.powers.count  %>)</h2>
-      <div class="card-container">
+    <div class="col">
+      <h2>List of your powers/items (<%= @profile.powers.count %>)</h2>
+      <div class="card-container mt-4">
         <% @profile.powers.each do |power| %>
-          <%= link_to power_path(power), class: "card-link m-auto my-4" do %>
-            <div class="card-power">
-              <% if power.photo.attached? %>
-              <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)"></div>
-              <% else %>
-              <div class="card-img"></div>
-              <% end %>
-              <div class="card-info">
+          <div class="card-power position-relative">
+            <%= link_to "", power_path(power), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-trash", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <%= link_to power_path(power), class: "card-link m-auto my-4" do %>
+            <% if power.photo.attached? %>
+              <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)">
+              </div>
+            <% else %>
+              <div class="card-img default-image-power"></div>
+            <% end %>
+              <div class="card-info px-3">
                 <p class="text-title <%= 'text-decoration-none' %>"><%= power.name %></p>
                 <p class="text-body <%= 'text-decoration-none' %>"><%= power.user.pseudo %></p>
               </div>
-              <div class="card-footer">
-                <span class="text-title">$<%= power.price %> <p class="per-day">/per day</p></span>
-                <div class="card-button">
-                  <span class="material-symbols-outlined" style="font-weight: 200; font-size: 35px;"> arrow_circle_right </span>
-                </div>
+              <div class="d-flex justify-content-center">
+                <div class="border border-dark opacity-25 w-75"></div>
               </div>
-            </div>
-          <% end %>
+              <div class="card-footer p-3">
+                <span class="text-title">$<%= power.price %> <p class="per-day">/per day</p></span>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
-      <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
+      <%= link_to new_power_path(@power) do%>
+      <button class="button-confirm">Add power</button>
+      <% end %>
     </div>
   </div>
   <div class="row">

@@ -28,8 +28,9 @@
   <% if @power.user_id == current_user.id %>
     <div class="row mt-4">
       <div class="col ps-0">
-      <%= link_to "Back to list of my powers", profile_path(:id), class: "btn btn-outline-secondary position-absolute end-0", style: "top: 100px; margin-right: 185px" %>
-      <%= link_to "Edit this power", edit_power_path(@power), class: "btn btn-outline-primary"%>
+        <%= link_to edit_power_path(@power) do%>
+          <button class="button-confirm mt-0">Edit this power</button>
+        <% end %>
       </div>
     </div>
   <% else %>
@@ -39,18 +40,17 @@
         <%= simple_form_for [@power, @booking] do |f| %>
           <%= f.input :start_date,
                       as: :string,
-                      input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" } } %>
+                      input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a start date" } %>
           <%= f.input :end_date,
                       as: :string,
-                      input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" } } %>
+                      input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a end date" } %>
           <div data-datepicker-target="total"></div>
           <%= f.input :total_price,
                       as: :integer,
                       input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
-          <%= f.submit class: "btn btn-primary", data_datepicker_action: "submit->datepicker#booking" %>
+          <%= f.submit class: "button-confirm mt-3 mb-2", data_datepicker_action: "submit->datepicker#booking" %>
           <% end %>
       </div>
     </div>
-    <%= link_to "back to list of powers", root_path, class: "btn btn-outline-secondary position-absolute end-0", style: "top: 100px; margin-right: 185px" %>
   <% end %>
 </div>

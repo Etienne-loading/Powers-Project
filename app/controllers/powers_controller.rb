@@ -3,8 +3,20 @@ class PowersController < ApplicationController
   before_action :set_profile, only: [:show, :index, :new, :edit, :update]
 
   def index
-    @powers = Power.all
-    @powers = Power.where.not(user_id: current_user.id)
+    if params[:query].present?
+      sql_query = <<~SQL
+        powers.name ILIKE :query
+        OR powers.description ILIKE :query
+        OR powers.universe ILIKE :query
+        OR users.pseudo ILIKE :query
+        OR users.last_name ILIKE :query
+        OR users.first_name ILIKE :query
+      SQL
+      @powers = Power.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @powers = Power.all
+      @powers = Power.where.not(user_id: current_user.id)
+    end
   end
 
   def show
