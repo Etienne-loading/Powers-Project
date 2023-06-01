@@ -21,6 +21,8 @@
       <p class="pb-3"><%= @power.category %></p>
       <strong>Universe</strong>
       <p><%= @power.universe %></p>
+      <strong>Price</strong>
+      <p data-datepicker-target="price"><%= @power.price %> $ <span class="per-day">/per day</span></p>
     </div>
   </div>
   <% if @power.user_id == current_user.id %>
@@ -34,7 +36,6 @@
     <div class="row mt-4">
       <div class="col bg-white p-4 my-4">
         <h2>Book <%= @power.name %></h2>
-        <strong><p data-datepicker-target="price"><%= @power.price %> $ <span class="per-day">/per day</span></p></strong>
         <%= simple_form_for [@power, @booking] do |f| %>
           <%= f.input :start_date,
                       as: :string,
