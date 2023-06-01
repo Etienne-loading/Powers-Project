@@ -1,35 +1,56 @@
 <div class="container" data-controller="datepicker"->
   <div class="row justify-content-center my-4">
-    <div class="col">
-      <h1><%= @power.name %></h1>
+    <div class="col p-0">
+      <h1><strong><%= @power.name %>'s  page</strong></h1>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-    <p data-datepicker-target="price"><%= @power.price %> $</p>
-    <p><%= @power.description %></p>
-    <p><%= @power.rarity %></p>
-    <p><%= @power.category %></p>
-    <p><%= @power.universe %></p>
+  <div class="col-6 ps-0">
+    <% if @power.photo.attached? %>
+      <div class="h-100 rounded" style="background-image: url('<%= cl_image_path @power.photo.key %>'); background-size: cover; background-position: center;"></div>
+    <% else %>
+      <div class="h-100 rounded default-image-power"></div>
+    <% end %>
+  </div>
+    <div class="col-6 bg-white py-4">
+      <strong>Description</strong>
+      <p class="pb-3"><%= @power.description %></p>
+      <strong>Rarity</strong>
+      <p class="pb-3"><%= @power.rarity %></p>
+      <strong>Category</strong>
+      <p class="pb-3"><%= @power.category %></p>
+      <strong>Universe</strong>
+      <p><%= @power.universe %></p>
+      <strong>Price</strong>
+      <p data-datepicker-target="price"><%= @power.price %> $ <span class="per-day">/per day</span></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col bg-white p-4 my-4">
-      <h2>Add a booking</h2>
-      <%= simple_form_for [@power, @booking] do |f| %>
-        <%= f.input :start_date,
-                    as: :string,
-                    input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" } } %>
-        <%= f.input :end_date,
-                    as: :string,
-                    input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" } } %>
-        <div data-datepicker-target="total"></div>
-         <%= f.input :total_price,
-                    as: :integer,
-                    input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
-        <%= f.submit class: "btn btn-primary", data_datepicker_action: "submit->datepicker#booking" %>
-        <% end %>
+  <% if @power.user_id == current_user.id %>
+    <div class="row mt-4">
+      <div class="col ps-0">
+      <%= link_to "Back to list of my powers", profile_path(:id), class: "btn btn-outline-secondary position-absolute end-0", style: "top: 100px; margin-right: 185px" %>
+      <%= link_to "Edit this power", edit_power_path(@power), class: "btn btn-outline-primary"%>
+      </div>
     </div>
-  </div>
-  <%= link_to "back to list of powers", root_path %>
+  <% else %>
+    <div class="row mt-4">
+      <div class="col bg-white p-4 my-4">
+        <h2>Book <%= @power.name %></h2>
+        <%= simple_form_for [@power, @booking] do |f| %>
+          <%= f.input :start_date,
+                      as: :string,
+                      input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" } } %>
+          <%= f.input :end_date,
+                      as: :string,
+                      input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" } } %>
+          <div data-datepicker-target="total"></div>
+          <%= f.input :total_price,
+                      as: :integer,
+                      input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
+          <%= f.submit class: "btn btn-primary", data_datepicker_action: "submit->datepicker#booking" %>
+          <% end %>
+      </div>
+    </div>
+    <%= link_to "back to list of powers", root_path, class: "btn btn-outline-secondary position-absolute end-0", style: "top: 100px; margin-right: 185px" %>
+  <% end %>
 </div>

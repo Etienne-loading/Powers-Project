@@ -10,7 +10,7 @@
         <% if power.photo.attached? %>
           <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)"></div>
         <% else %>
-          <div class="card-img"></div>
+          <div class="card-img default-image-power"></div>
         <% end %>
           <div class="card-info">
             <p class="text-title <%= 'text-decoration-none' %>"><%= power.name %></p>
