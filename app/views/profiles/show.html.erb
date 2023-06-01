@@ -45,7 +45,9 @@
         <% end %>
         <% end %>
       </div>
-      <%= link_to "Add power", new_power_path(@power), class: "comic-button"%>
+      <%= link_to new_power_path(@power) do%>
+        <button class="button-confirm">Add power</button>
+      <% end %>
     </div>
   </div>
   <div class="row">
