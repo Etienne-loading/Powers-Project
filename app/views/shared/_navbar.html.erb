@@ -4,10 +4,10 @@
     <%= form_with url: powers_path, method: :get, class: "d-flex w-50" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control my-3", id:"search-bar",
+        class: "input-comic my-3", id:"search-bar",
         placeholder: "Find a power or magical item"
       %>
-      <%= submit_tag "Search", class: "btn btn-primary my-3", id:"search-btn" %>
+      <%= submit_tag "Search", class: "button-confirm my-3", id:"search-btn" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
