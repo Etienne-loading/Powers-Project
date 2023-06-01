@@ -6,7 +6,7 @@
     <div class="col-3">
       <div class="card">
         <% if @profile.profile_photo.attached?  %>
-        <%= link_to "", edit_user_registration_path(@profile), class: "btn btn-outline-secondary text-white fa-solid fa-pen-to-square position-absolute top-0 end-0" %>
+        <%= link_to "", edit_user_registration_path(@profile), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-pen" %>
         <%= cl_image_tag @profile.profile_photo.key, alt:"Profile image", crop: :fill %>
         <% else %>
         <%= link_to "", edit_user_registration_path(@profile), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-pen" %>
@@ -28,7 +28,7 @@
             <%= link_to "", power_path(power), class: "button-log position-absolute top-0 start-100 translate-middle fa-solid fa-trash", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <%= link_to power_path(power), class: "card-link m-auto my-4" do %>
             <% if power.photo.attached? %>
-              <div class="card-img position-relative" style="background-image: url(<%= cl_image_path power.photo.key %>)">
+              <div class="card-img" style="background-image: url(<%= cl_image_path power.photo.key %>)">
               </div>
             <% else %>
               <div class="card-img default-image-power"></div>
