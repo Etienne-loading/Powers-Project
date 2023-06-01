@@ -18,7 +18,9 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <div class="d-flex justify-content-center align-items-center">
-            <%= link_to "Add power", new_power_path(@power), class: "button-confirm me-3 m-0 d-flex align-items-center px-2"%>
+            <%= link_to new_power_path(@power) do%>
+              <button class="button-confirm me-3 m-0 d-flex align-items-center px-2">Add power</button>
+            <% end %>
           <div class="nav-item dropdown">
           <a href="" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if @profile.profile_photo.attached? %>
