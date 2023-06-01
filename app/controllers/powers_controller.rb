@@ -7,6 +7,7 @@ class PowersController < ApplicationController
       sql_query = <<~SQL
         powers.name ILIKE :query
         OR powers.description ILIKE :query
+        OR powers.universe ILIKE :query
         OR users.pseudo ILIKE :query
         OR users.last_name ILIKE :query
         OR users.first_name ILIKE :query
