@@ -5,10 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-
+Review.destroy_all
+Booking.destroy_all
 Power.destroy_all
 User.destroy_all
+
 
 puts "Creating users ..."
 goku = { first_name: "Son", last_name: "Goku", address: "439 East district, Earth 7th Universe", pseudo: "Kakarotto", email: "songoku@gmail.com", password: "password", url: "https://pokesumo.com/img/cms/goku.jpg" }
@@ -17,7 +18,7 @@ flash = { first_name: "Barry", last_name: "Allen", address: "1956 Showcase Drive
 link = { first_name: "Link", last_name: "Rinku", address: "Hyrul's fields, Cocorico", pseudo: "Ganondorf-hater", email: "link-hyrul@gmail.com", password: "password", url: "https://www.puissance-zelda.com/img/news/2022/10/tears-of-the-kingdom-link-statue-1.jpg" }
 dobby = { first_name: "Dobby", last_name: "L'elfe libre", address: "Nowhere on Earth", pseudo: "FreeDobby", email: "dobby@free.com",password: "password", url: "https://www.journaldugeek.com/content/uploads/2022/11/template-jdg-3.jpg" }
 samus = { first_name: "Samus", last_name: "Droid", address: "nowhere in galaxy", pseudo: "Samus", email: "samus@free.com", password: "password", url: "https://cdn.gamekult.com/optim/images/news/30/3050798061/metroid-samus-returns-prend-le-pouvoir-b672ff53__1920_1080__36-172-1614-680.jpg" }
-bowser = { first_name: "Bowser", last_name: "Vilain", address: "Bowser's castle", pseudo: "Bowser", email: "bowser@gmail.com", password: "password", url: "https://cdn.damalion.com/wp-content/uploads/2023/03/SUPER-MARIO-BOWSER-MOVIE.jpg?strip=all&lossy=1&ssl=1" }
+# bowser = { first_name: "Bowser", last_name: "Vilain", address: "Bowser's castle", pseudo: "Bowser", email: "bowser@gmail.com", password: "password", url: "https://cdn.damalion.com/wp-content/uploads/2023/03/SUPER-MARIO-BOWSER-MOVIE.jpg?strip=all&lossy=1&ssl=1" }
 thor = { first_name: "Thor", last_name: "Odinson", address: "Asgard royal castel", pseudo: "Thor-hammer", email: "thor@gmail.com", password: "password", url: "https://www.ed92.org/wp-content/uploads/2021/05/THOR-780x406.jpg" }
 kirby = { first_name: "Kirby", last_name: "Pink", address: "Swash bros kirby's stage", pseudo: "Kirby-inhale", email: "bowser@gmail.com", password: "password", url: "https://images.radio-canada.ca/q_auto,w_960/v1/ici-info/16x9/kirby-forgotten-island-nintendo.png" }
 hisoka = { first_name: "Hisoka", last_name: "Morrow", address: "undergrounds in Tokyo", pseudo: "Hisoka-circus", email: "hisokamorrow@gmail.com", password: "password", url: "https://www.origamigne.com/shop/wp-content/uploads/2020/05/hisoka_origamigne_Migne_Huynh.jpg" }
@@ -42,19 +43,20 @@ spider_man = { first_name: "Peter", last_name: "Parker", address: "20 Ingram Str
 sora = { first_name: "Sora", last_name: "Openheimer", address: "Destiny Islands", pseudo: "SoraKeyblade", email: "soraopen@gmail.com", password: "password", url: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/kingdom-hearts-3/9/99/Sora.png" }
 
 
-[goku, obi_wan, flash, link, dobby, samus, bowser, thor, kirby, hisoka, gon, manjiro, thanos, spider_man, wolverine, sora, solo, shulk, pikachu, piccolo, naruto].each do |attributes|
-  user = User.create!(attributes)
-  puts "Created #{user.pseudo}"
-end
-
-[].each do |hash|
+[goku, obi_wan, flash, link, dobby, samus, thor, kirby, hisoka, gon, manjiro, thanos, spider_man, wolverine, sora, solo, shulk, pikachu, piccolo, naruto].each do |hash|
   user = User.create(
     first_name: hash[:first_name],
-    last_name: hash[:last_name]
+    last_name: hash[:last_name],
+    address: hash[:address],
+    pseudo: hash[:pseudo],
+    email: hash[:email],
+    password: hash[:password]
   )
+  hash[:id] = user.id
   image = URI.open(hash[:url])
-  user.photo.attach(io: image, file_name: user.pseudo, content_type: 'png')
+  user.profile_photo.attach(io: image, filename: user.pseudo, content_type: 'png')
   user.save
+  puts "Created #{user.pseudo}"
 end
 
 # Power.destroy_all
@@ -71,7 +73,7 @@ transplaner = { name: "Transplaner", price: 20000, description: "Transplaner is 
 
 armor = { name: "Samus Armor", price: 24000, description: "Transplaner is a non-verbal transportation spell that allows to travel instantly and appear at another location.", rarity: "Rare", universe: "Video games", user: samus, url:"https://metroid.nintendo.com/dread/assets/images/samus/suit-up/2.VariaSuit.jpg" }
 
-fire = { name: "Fire of Bowser", price: 8000, description: "Transplaner is a non-verbal transportation spell that allows to travel instantly and appear at another location.", rarity: "Uncommon", universe: "Video games", user: bowser, url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpCXEf05a7m7_LxPJ3xLnAxppcFrtj5A8Wg&usqp=CAU" }
+# fire = { name: "Fire of Bowser", price: 8000, description: "Transplaner is a non-verbal transportation spell that allows to travel instantly and appear at another location.", rarity: "Uncommon", universe: "Video games", user: bowser, url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHpCXEf05a7m7_LxPJ3xLnAxppcFrtj5A8Wg&usqp=CAU" }
 
 hammer = { name: "Hammer of gods", price: 320000, description: "Transplaner is a non-verbal transportation spell that allows to travel instantly and appear at another location.", rarity: "Legendary", universe: "Comics", user: thor, url:"https://www.outfit4events.com/underwood/download/images/thorovo-kladivo-1.jpg" }
 
@@ -87,7 +89,7 @@ moto = { name: "Moto from Tokyo", price: 2000, description: "Transplaner is a no
 
 gant = { name: "gauntnet", price: 900000000, description: "The gauntlet itself is simply a glove or similar tool designed to harness the power of the Infinity Stones. With all six gems in place, the wearer of the gauntlet has the power to do whatever they want — read minds, steal souls, bend time, alter reality, manipulate energy, or travel through space (teleportation)", rarity: "Legendary", universe: "Saga", user: thanos, url:"https://hoopnod.com/wp-content/uploads/2018/10/gant-thanos-une-699-x-388.jpg" }
 
-monado = { name: "Monado III", price: 150000, description: "The Monado is a powerful energy blade that can manipulate the ether around it, and by doing so, change the material and immaterial shape of the world. One's ability to control the Monado depends on the strength of will of its user; most users who try to use the sword cannot control it.", rarity: "Epic", universe: "Video Games", user: Shulk, url:"https://i.redd.it/9f2xbwyzfuj11.jpg" }
+monado = { name: "Monado III", price: 150000, description: "The Monado is a powerful energy blade that can manipulate the ether around it, and by doing so, change the material and immaterial shape of the world. One's ability to control the Monado depends on the strength of will of its user; most users who try to use the sword cannot control it.", rarity: "Epic", universe: "Video games", user: shulk, url:"https://i.redd.it/9f2xbwyzfuj11.jpg" }
 
 makanko_sappo = { name: "Makankô Sappô", price: 125000, description: "This technique consists of accumulating all of one's energy at the tips of two fingers, the index and middle fingers, and throwing it at the opponent in the form of a spiral energy beam. The big flaw of this technique is the time needed to accumulate the energy: during this moment, the person must put both fingers on their forehead and concentrate, resulting in total vulnerability.", rarity: "Epic", universe: "Manga", user: piccolo, url: "https://static.wikia.nocookie.net/dragonuniverse/images/f/fb/MakankosappoMovie.png/revision/latest?cb=20170313153810"}
 
@@ -99,8 +101,18 @@ web_shooter = { name: "Web shooter", price: 99999, description: "Spider-Man's we
 
 keyblade = { name: "Keyblade", price: 225000, description: "The keyblades are mysterious weapons that are heavily featured in the Kingdom Hearts series. Wielded by the main character, Sora, as well as a number of other important characters, the Keyblade is a main part of the battle between Darkness and Light.", rarity: "Legendary", universe: "Video games", user: sora, url: "https://www.japanzon.com/143193-product_hd/square-enix-kingdom-hearts-light-up-keyblade-kingdom-chain.jpg" }
 
-[kamehameha, lightsaber, superspeed, master_sword, transplaner, makanko_sappo, pistol, shadow_clone_technique, web_shooter, monado, gant, fish, keyblade, moto, card, inhale, storm, hammer, fire, armor].each do |attributes|
-  power = Power.create!(attributes)
+[kamehameha, lightsaber, superspeed, master_sword, transplaner, makanko_sappo, shadow_clone_technique, web_shooter, monado, gant, fish, keyblade, moto, card, inhale, storm, hammer, armor].each do |hash|
+  power = Power.create!(
+    name: hash[:name],
+    price: hash[:price],
+    description: hash[:description],
+    rarity: hash[:rarity],
+    universe: hash[:universe],
+    user: User.find(hash[:user][:id])
+  )
+  image = URI.open(hash[:url])
+  power.photo.attach(io: image, filename: power.name, content_type: 'png')
+  power.save
   puts "Created #{power.name}"
 end
 
