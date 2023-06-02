@@ -1,65 +1,79 @@
 <div class="container" data-controller="datepicker"->
   <div class="row justify-content-center my-4">
-    <div class="col p-0">
-      <h1><strong><%= @power.name %>'s  page</strong></h1>
-    </div>
+    <h1><strong><%= @power.name %>'s  page</strong></h1>
   </div>
   <div class="row">
-  <div class="col-6 ps-0">
-    <% if @power.photo.attached? %>
-      <div class="h-100 rounded" style="background-image: url('<%= cl_image_path @power.photo.key %>'); background-size: cover; background-position: center;"></div>
-    <% else %>
-      <div class="h-100 rounded default-image-power"></div>
-    <% end %>
-  </div>
-    <div class="col-6 bg-white py-4">
-      <strong>Description</strong>
-      <p class="pb-3"><%= @power.description %></p>
-      <strong>Rarity</strong>
-      <p class="pb-3"><%= @power.rarity %></p>
-      <strong>Category</strong>
-      <p class="pb-3"><%= @power.category %></p>
-      <strong>Universe</strong>
-      <p><%= @power.universe %></p>
-      <strong>Price</strong>
-      <p data-datepicker-target="price"><%= @power.price %> $ <span class="per-day">/per day</span></p>
-    </div>
-  </div>
-  <h2 class="mt-3">Reviews</h2>
-  <hr>
-  <% @power.reviews.each do |review| %>
-      <div class="d-flex justify-content-between">
-      <div class="d-flex"><strong class="me-4">posted by <%= review.booking.user.pseudo %></strong><p><%= review.content %></p></div>
-      <div><small><%= (((DateTime.now.strftime('%s').to_i) - review.created_at.to_i) / 3600 / 60 / 24) %>days ago</small></div>
-      </div>
-      <hr>
-  <% end %>
-  <% if @power.user_id == current_user.id %>
-    <div class="row mt-4">
-      <div class="col ps-0">
-        <%= link_to edit_power_path(@power) do%>
-          <button class="button-confirm mt-0">Edit this power</button>
+    <div class="col-8 bg-white p-4 d-flex justify-content-around">
+        <% if @power.photo.attached? %>
+        <div class="col-4 me-4">
+          <div class="h-100 w-100  rounded r" style="background-image: url('<%= cl_image_path @power.photo.key %>
+            '); background-size: cover; background-position: center;">
+          </div>
+        </div>
+        <% else %>
+        <div class="col-4 me-4">
+          <div class="h-100 w-100 me-4 rounded default-image-power">
+          </div>
+        </div>
         <% end %>
+      <div>
+        <div>
+          <strong>Description</strong>
+          <p class="pb-3 "><%= @power.description %></p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <strong>Rarity</strong>
+            <p class="pb-3"><%= @power.rarity %></p>
+          </div>
+          <div>
+            <strong>Universe</strong>
+            <p><%= @power.universe %></p>
+          </div>
+          <div>
+            <strong>Price</strong>
+            <p data-datepicker-target="price"><%= @power.price %> $ <span class="per-day">/per day</span></p>
+          </div>
+        </div>
       </div>
     </div>
-  <% else %>
-    <div class="row mt-4">
-      <div class="col bg-white p-4 my-4">
-        <h2>Book <%= @power.name %></h2>
-        <%= simple_form_for [@power, @booking] do |f| %>
-          <%= f.input :start_date,
-                      as: :string,
-                      input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a start date" } %>
-          <%= f.input :end_date,
-                      as: :string,
-                      input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a end date" } %>
-          <div data-datepicker-target="total"></div>
-          <%= f.input :total_price,
-                      as: :integer,
-                      input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
-          <%= f.submit class: "button-confirm mt-3 mb-2", data_datepicker_action: "submit->datepicker#booking" %>
+    <div class="col-4 bg-white p-4 border-start">
+      <h2>Book <%= @power.name %></h2>
+      <%= simple_form_for [@power, @booking] do |f| %>
+      <%= f.input :start_date,
+                  as: :string,
+                  input_html: { data: { datepicker_target: 'startDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a start date" } %>
+      <%= f.input :end_date,
+                  as: :string,
+                  input_html: { data: { datepicker_target: 'endDate', action: "change->datepicker#totalupdate" }, class: "input-comic", placeholder: "Pick a end date" } %>
+      <div data-datepicker-target="total"></div>
+      <%= f.input :total_price,
+                  as: :integer,
+                  input_html: {data: { datepicker_target: 'totalInput'}, hidden: true}, label: false %>
+      <%= f.submit class: "button-confirm mt-3 mb-2", data_datepicker_action: "submit->datepicker#booking" %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <h2 class="mt-3">Reviews</h2>
+      <hr>
+      <% @power.reviews.each do |review| %>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex"><strong class="me-4">posted by <%= review.booking.user.pseudo %></strong><p><%= review.content %></p></div>
+        <div><small><%= (((DateTime.now.strftime('%s').to_i) - review.created_at.to_i) / 3600 / 60 / 24) %>days ago</small></div>
+      </div>
+        <hr>
           <% end %>
+          <% if @power.user_id == current_user.id %>
+          <div class="row mt-4">
+            <div class="col ps-0">
+            <%= link_to edit_power_path(@power) do%>
+            <button class="button-confirm mt-0">Edit this power</button>
+            <% end %>
+          </div>
       </div>
+      <% else %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
