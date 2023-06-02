@@ -17,8 +17,6 @@
       <p class="pb-3"><%= @power.description %></p>
       <strong>Rarity</strong>
       <p class="pb-3"><%= @power.rarity %></p>
-      <strong>Category</strong>
-      <p class="pb-3"><%= @power.category %></p>
       <strong>Universe</strong>
       <p><%= @power.universe %></p>
       <strong>Price</strong>
@@ -29,8 +27,8 @@
   <hr>
   <% @power.reviews.each do |review| %>
       <div class="d-flex justify-content-between">
-      <div class="d-flex"><strong class="me-4">posted by <%= review.booking.user.pseudo %></strong><p><%= review.content %></p></div>
-      <div><small><%= (((DateTime.now.strftime('%s').to_i) - review.created_at.to_i) / 3600 / 60 / 24) %>days ago</small></div>
+        <div class="d-flex"><strong class="me-4">posted by <%= review.booking.user.pseudo %></strong><p class="mb-0"><%= review.content %></p></div>
+          <p class="mb-0"><%= review.calculate_time %></p>
       </div>
       <hr>
   <% end %>
