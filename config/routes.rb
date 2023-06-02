@@ -15,4 +15,8 @@ Rails.application.routes.draw do
       get :cancel
     end
   end
+
+  resources :bookings, only: [] do
+    resources :reviews, only: %i[new create]
+  end
 end

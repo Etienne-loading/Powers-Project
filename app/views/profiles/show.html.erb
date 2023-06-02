@@ -85,6 +85,35 @@
               <%= image_tag "cancel_red.png",style:"max-height: 24px; max-width: 24px; color:green;" %>
               <%end%>
               </td>
+            <!-- Button trigger modal -->
+            <td class="align-middle">
+            <% if booking.end_date < DateTime.now() %>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal<%= booking.id %>">
+                Add Review
+              </button>
+            <% end %>
+            </td>
+            <!-- Modal -->
+            <div class="modal fade" id="reviewModal<%= booking.id %>" tabindex="-1" aria-labelledby="reviewModal<%= booking.id %>Label" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="reviewModal<%= booking.id %>Label"><%= booking.power.name %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for [booking, Review.new] do |f| %>
+                      <%= f.input :content %>
+                      <%= f.submit %>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+          </div>
           </tr>
             <% end %>
         </tbody>
