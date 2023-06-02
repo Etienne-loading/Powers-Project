@@ -1,39 +1,60 @@
 <%= render "shared/banner" %>
 
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="rounded p-4 mt-4 card-about">
-        <h2 class="mb-4"><strong class="border-bottom border-dark px-5">Zero to hero</strong></h2>
-        <p>Become a hero in 2 clicks ! Powerup gives you the opportunity to rent magical powers and items very quickly. The universe's greatest heroes and protagonists are here to offer you their powers, so it's up to you to save the world!
-        Sagas, video games, manga or comic books, they're all here!
-
-        These powers are sold by our approved and certified suppliers.
-        Our products are regularly inspected.</p>
+  <h2 class="py-4"><strong class="border-bottom border-dark pe-5">Our service</strong></h2>
+  <div class="row card-about my-4 p-4">
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+      <%= image_tag("Krilinbidon.webp", width: "200px", height: "280px") %>
+      <h2 class="my-4 text-center">Lambda people</h2>
+    </div>
+    <div class="col d-flex align-items-center justify-content-center">
+      <i class=" fa-solid fa-arrow-right"></i>
+    </div>
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+      <%= image_tag("pill.png", width: "200px", height: "280px", class: "img") %>
+      <div>
+        <h2 class="my-4 text-center">Power compagny</h2>
       </div>
     </div>
+    <div class="col d-flex align-items-center justify-content-center">
+      <i class=" fa-solid fa-arrow-right"></i>
+    </div>
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+      <%= image_tag("Krilinsayan.png", width: "200px", height: "280px") %>
+      <h2 class="my-4 text-center">People with super power</h2>
+    </div>
   </div>
-  <div class="row">
+  <h2 class="py-4"><strong class="border-bottom border-dark pe-5">Our feedbacks from rentals</strong></h2>
+  <div class="row card-about my-4 py-4">
     <div class="col my-4">
-      <div class="rounded p-4 card-about">
-        <h2 class="text-center mb-4 px-3"><strong class="border-bottom border-dark px-5">Our feedbacks from rentals</strong></h2>
-        <figure>
-          <blockquote class="blockquote">
-            <p>"Great experience, my fans want my Master Sword to solve their everyday problems. Meeting them and helping them makes me feel like I'm helping my peers."</p>
-          </blockquote>
-          <figcaption class="blockquote-footer">
-            Link <cite title="Source Title">Hyrul's fields</cite>
-          </figcaption>
-        </figure>
-        <figure>
-          <blockquote class="blockquote">
-            <p>"What a service, PowerUp always here to help us to manage rental issues ! Last time, my power was used to destroy a pyramid in Guatemala... I was so sorry... but at the end PowerUp did all to resolve and support me! Thanks a lot.."</p>
-          </blockquote>
-          <figcaption class="blockquote-footer">
-            Kakarotte alias Son Goku <cite title="Source Title">somewhere in the universe</cite>
-          </figcaption>
-        </figure>
-      </div>
+      <figure>
+        <blockquote class="blockquote">
+          <p>"Great experience, my fans want my Master Sword to solve their everyday problems. Meeting them and helping them makes me feel like I'm helping my peers."</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          Link <cite title="Source Title">Hyrul's fields</cite>
+        </figcaption>
+      </figure>
+      <figure>
+        <blockquote class="blockquote">
+          <p>"What a service, PowerUp always here to help us to manage rental issues ! Last time, my power was used to destroy a pyramid in Guatemala... I was so sorry... but at the end PowerUp did all to resolve and support me! Thanks a lot.."</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          Kakarotte alias Son Goku <cite title="Source Title">somewhere in the universe</cite>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <h2 class="py-4"><strong class="border-bottom border-dark pe-5">They talk about us</strong></h2>
+  <div class="row card-about my-4 py-4">
+    <div class="col-4 d-flex align-items-center justify-content-cente">
+      <%= image_tag("daily-prophet.webp", width: "400px", height: "100px") %>
+    </div>
+    <div class="col-4 d-flex flex-column align-items-center justify-content-center border-start border-end border-dark">
+      <%= image_tag("daily-planet.png",  width: "400px", height: "100px") %>
+    </div>
+    <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+      <%= image_tag("daily-bugle.webp", width: "400px", height: "100px") %>
     </div>
   </div>
 </div>
