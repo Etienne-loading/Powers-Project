@@ -7,8 +7,6 @@
         <%= f.input :price, label: false, placeholder: "Price", input_html: { class: "input-comic" }%>
         <p class= "margin-category-title" >Choose a universe :</p>
         <%= f.input :universe, collection: Power::UNIVERSE, error: "Universe is mandatory", prompt: "Universe...", label: false, input_html: { class: "input-comic" } %>
-        <p class= "margin-category-title">Choose a category :</p>
-        <%= f.input :category, collection: Power::CATEGORY, error: "Category is mandatory", prompt: "Category...", label: false, input_html: { class: "input-comic" } %>
         <p class= "margin-category-title">Choose a rarity :</p>
         <%= f.input :rarity, collection: Power::RARITY, error: "Rarity is mandatory", prompt: "Rarity...", label: false, input_html: { class: "input-comic" } %>
         <%= f.input :photo, as: :file, label: "Choose a picture", input_html: { class: "input-comic" } %>
